@@ -1,6 +1,6 @@
 "use strict";
 const game = document.getElementById('game');
-const solvedMsg = document.getElementById('solved-message');
+const headerMsg = document.getElementById('header-message');
 const movesMsg = document.getElementById('moves');
 let start = false;
 let moves = 0;
@@ -87,9 +87,9 @@ const move = sq => {
     }
   });
   update();
-  solvedMsg.innerHTML = null
+  headerMsg.innerHTML = null
   if(start===true && arrayCompare(board,[1,2,3,4,5,6,7,8,null])) {
-    solvedMsg.innerHTML = 'Solved!'
+    headerMsg.innerHTML = 'Solved!'
     start = false
     moves = 0
     return true
@@ -133,7 +133,7 @@ const solveReset = () => {
   7,8,null
   ]
   start = false
-  solvedMsg.innerHTML = null
+  headerMsg.innerHTML = null
   moves = 0
   update();
 }
@@ -141,9 +141,9 @@ window.onload = (e) => {
   shuffle(10);
   moves = 0;
   update();
-  solvedMsg.innerHTML = 'Finished loading';
+  headerMsg.innerHTML = 'Finished loading';
   setTimeout(() => {
-    solvedMsg.innerHTML = null;
+    headerMsg.innerHTML = null;
   },800);
 }
 
