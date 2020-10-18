@@ -1,15 +1,15 @@
 "use strict";
-const game = document.getElementById('game')
-const solvedMsg = document.getElementById('solved-message')
-const movesMsg = document.getElementById('moves')
-let start = false
-let moves = 0
+const game = document.getElementById('game');
+const solvedMsg = document.getElementById('solved-message');
+const movesMsg = document.getElementById('moves');
+let start = false;
+let moves = 0;
 let row, cell;
 let board = [
   1,2,3,
   4,5,6,
   7,8,null
-]
+];
 for(let i=1;i<=3;++i) {
   row = document.createElement('tr')
   game.appendChild(row)
@@ -27,8 +27,8 @@ const update = () => {
   let currentSq;
   for(let row=1; row<=3; ++row) {
     for(let col=1; col<=3; ++col) {
-      currentSq = (row-1)*3+col
-      document.getElementById(`square-${currentSq}`).innerHTML = board[currentSq - 1]
+      currentSq = (row-1)*3+col;
+      document.getElementById(`square-${currentSq}`).innerHTML = board[currentSq - 1];
     }
   }
   movesMsg.innerHTML = `Moves: ${moves}`
@@ -76,7 +76,7 @@ const move = sq => {
     'ud2': -1,
     'lr1': 1,
     'lr2': -1
-  }
+  };
   let testLog = []
   Object.keys(tests).forEach(item => {
     const currentTest = test(row,column,item.slice(0,-1),tests[item])
@@ -120,7 +120,7 @@ const shuffle = depth => {
   } catch(err) {
     moves = 0
     update();
-    return
+    return;
   }
   moves = 0
   update();
@@ -138,7 +138,6 @@ const solveReset = () => {
   update();
 }
 window.onload = (e) => {
-  solvedMsg.innerHTML = 'Loading...';
   shuffle(10);
   moves = 0;
   update();
